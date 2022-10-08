@@ -23,7 +23,7 @@ const validate = async (req: Request, res: Response) => {
   const { role } = req.body;
   const token = req.headers.authorization;
   jwt.validateToken(token);
-  res.status(200).json(role);
+  res.status(200).json({ role });
 };
 
 export default { login, validate };

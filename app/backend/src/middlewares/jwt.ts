@@ -11,13 +11,9 @@ const createToken = (data: string) => {
 };
 
 const validateToken = (token: string | undefined) => {
-  try {
-    if (!token) return { error: { code: 401, message: { message: 'Token not found' } } };
-    const data = verify(token, JWT_SECRET);
-    return data;
-  } catch (e) {
-    return { error: { code: 401, message: { message: 'Expired or invalid token' } } };
-  }
+  if (!token) return { error: { code: 401, message: { message: 'Token not found' } } };
+  const data = verify(token, JWT_SECRET);
+  return data;
 };
 
 export default { createToken, validateToken };
