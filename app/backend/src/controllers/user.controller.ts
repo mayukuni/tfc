@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import userService from '../services/user.service';
 import jwt from '../middlewares/jwt';
-import e = require('express');
+// import e = require('express');
 
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
