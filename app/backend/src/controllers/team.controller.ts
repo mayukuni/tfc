@@ -1,15 +1,19 @@
 import { Request, Response } from 'express';
-import teamService from '../services/team.service';
+import TeamService from '../services/team.service';
 
-const getAll = async (req: Request, res: Response) => {
-  const teams = await teamService.getAll();
-  return res.status(200).json(teams);
-};
+class TeamController {
+  constructor(private teamService: TeamService) {}
 
-const getById = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const team = await teamService.getById(Number(id));
-  return res.status(200).json(team);
-};
+  async getAll(_req: Request, res: Response) {
+    const teams = await this.teamService.getAll();
+    return res.status(200).json(teams);
+  }
 
-export default { getAll, getById };
+  async getById(req: Request, res: Response) {
+    const { id } = req.params;
+    const team = await this.teamService.getById(Number(id));
+    return res.status(200).json(team);
+  }
+}
+
+export default TeamController;

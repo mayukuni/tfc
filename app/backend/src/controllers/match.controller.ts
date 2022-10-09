@@ -1,9 +1,13 @@
 import { Request, Response } from 'express';
-import matchService from '../services/match.service';
+import MatchService from '../services/match.service';
 
-const getAll = async (req: Request, res: Response) => {
-  const matches = matchService.getAll();
-  return res.status(200).json(matches);
-};
+class MatchController {
+  constructor(private matchService: MatchService) {}
 
-export default { getAll };
+  async getAll(_req: Request, res: Response) {
+    const matchs = await this.matchService.getAll();
+    return res.status(200).json(matchs);
+  }
+}
+
+export default MatchController;

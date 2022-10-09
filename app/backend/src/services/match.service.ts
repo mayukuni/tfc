@@ -1,8 +1,12 @@
 import Matches from '../database/models/matches.model';
 
-const getAll = async () => {
-  const matches = await Matches.findAll();
-  return matches;
-};
+class MatchService {
+  constructor(private matchModel: typeof Matches) {}
 
-export default { getAll };
+  async getAll() {
+    const Matchs = await this.matchModel.findAll();
+    return Matchs;
+  }
+}
+
+export default MatchService;
