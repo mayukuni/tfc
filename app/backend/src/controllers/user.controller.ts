@@ -5,7 +5,7 @@ import jwt from '../middlewares/jwt';
 
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  if (!email) {
+  if (!email || !password) {
     res.status(400).json({ message: 'All fields must be filled' });
   }
   const user = await userService.login(email);
