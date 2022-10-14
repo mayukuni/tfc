@@ -15,15 +15,16 @@ const login = async (req: Request, res: Response) => {
     return res.status(401).json({ message: 'Incorrect email or password' });
   }
 
-  const token = jwt.createToken(email);
+  const token = jwt.createToken(user.email, user.role);
 
   return res.status(200).json({ token });
 };
 
-export default { login };
+// const validate = async (req: Request, res: Response) => {
+//   const token = req.headers.authorization;
+//   const { user } = req.body;
+//   jwt.validateToken(token);
+//   res.status(200).json({ role: user.role });
+// };
 
-// // async validate(req: Request, res: Response) {
-// //   const token = req.headers.authorization;
-// //   jwt.validateToken(token);
-// //   res.status(200).json({ role });
-// // };
+export default { login };
