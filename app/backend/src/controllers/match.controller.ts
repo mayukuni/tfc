@@ -17,4 +17,12 @@ const create = async (req: Request, res: Response) => {
   res.status(201).json(createdMatch);
 };
 
-export default { getAll, create };
+const update = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await MatchService.update(Number(id));
+
+  return res.status(200).json({ message: 'Finished' });
+};
+
+export default { getAll, create, update };

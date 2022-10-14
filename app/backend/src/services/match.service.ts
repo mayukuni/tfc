@@ -24,4 +24,10 @@ const create = async (matches: IMatch) => {
   return match;
 };
 
-export default { getAll, create };
+const update = async (id: number) => {
+  const match = await Matches.update({ inProgress: false }, { where: { id } });
+
+  return match;
+};
+
+export default { getAll, create, update };

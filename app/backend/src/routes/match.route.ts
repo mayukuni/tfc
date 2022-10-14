@@ -7,5 +7,6 @@ const router = Router();
 
 router.get('/matches', MatchController.getAll);
 router.post('/matches', jwt.validateToken, middleware.validateMatches, MatchController.create);
+router.patch('/matches/:id/finish', MatchController.update);
 
 export default router;
