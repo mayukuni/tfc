@@ -1,12 +1,14 @@
 import Matches from '../database/models/matches.model';
+import Team from '../database/models/teams.model';
 
-class MatchService {
-  constructor(private matchModel: typeof Matches) {}
+const getAll = async () => {
+  const matches = await Matches.findAll({
+    include: [
+      { model: Team, as: 'teamHome', attributes: ['teamName'] },
+      { model: Team, as: 'teamAway', attributes: ['teamName'] },
+    ],
+  });
+  return matches;
+};
 
-  async getAll(): Promise<Matches[]> {
-    const matches = await this.matchModel.findAll();
-    return matches;
-  }
-}
-
-export default MatchService;
+export default { getAll };
