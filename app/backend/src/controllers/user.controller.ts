@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import UserService from '../services/user.service';
-import jwt from '../middlewares/jwt';
+import jwt from '../middlewares/jwt.middleware';
 
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;

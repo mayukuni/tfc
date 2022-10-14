@@ -25,9 +25,23 @@ const create = async (matches: IMatch) => {
 };
 
 const update = async (id: number) => {
-  const match = await Matches.update({ inProgress: false }, { where: { id } });
+  const match = await Matches.findByPk(id);
+  const updatedMatch = await match?.update({ inProgress: false });
 
-  return match;
+  return updatedMatch;
 };
 
-export default { getAll, create, update };
+const updateById = async (
+  id: number,
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+) => {
+  const match = await Matches.findByPk(id);
+  const updatedMatch = await match?.update({
+    homeTeamGoals, awayTeamGoals,
+  });
+
+  return updatedMatch;
+};
+
+export default { getAll, create, update, updateById };
