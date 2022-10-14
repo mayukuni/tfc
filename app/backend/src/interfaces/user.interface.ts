@@ -1,6 +1,4 @@
-// import Joi from 'joi';
-
-export default interface IUser {
+interface IUser {
   id?: number;
   username: string;
   role: string;
@@ -8,6 +6,12 @@ export default interface IUser {
   password: string;
 }
 
-// const UserValidation = Joi.object({
-//   email: Joi.string().email(),
-// })
+interface ILogin {
+  email: string;
+  password: string;
+}
+
+export {
+  IUser,
+  ILogin,
+};
