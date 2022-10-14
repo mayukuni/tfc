@@ -4,11 +4,11 @@ import Team from './teams.model';
 
 class Matches extends Model {
   public id!: number;
-  public homeTeam!: string;
-  public homeTeamGoals!: string;
-  public awayTeam!: string;
-  public awayTeamGoals!: string;
-  public inProgress!: string;
+  public homeTeam!: number;
+  public homeTeamGoals!: number;
+  public awayTeam!: number;
+  public awayTeamGoals!: number;
+  public inProgress!: number;
 }
 
 Matches.init({

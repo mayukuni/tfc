@@ -5,6 +5,6 @@ import jwt from '../middlewares/jwt';
 const router = Router();
 
 router.post('/login', UserController.login);
-router.get('/login/validate', jwt.validateToken);
+router.get('/login/validate', jwt.validate);
 
 export default router;
